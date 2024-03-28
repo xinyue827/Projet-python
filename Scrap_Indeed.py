@@ -34,71 +34,64 @@ def scrape_job_links(keywords, num_pages):
     driver.quit()
     return links
 
-scrape_job_links(['data analyst'], 15)
+links = scrape_job_links(['data analyst'], 15)
   
 len(links)
 
 def found_emails(links):
-    found_emails = []
-    driver = webdriver.Chrome() 
+  found_emails = []
+  driver = webdriver.Chrome(service=cService) 
+  for link in links:
+      driver.get(link)
+      content = driver.page_source 
+      soup = BeautifulSoup(content, 'html.parser')
+      job_description_element = soup.find('div', id='jobDescriptionText')
+
+      if job_description_element is not None:
+          job_description = job_description_element.get_text()
+          time.sleep(2)
+          email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+          emails = re.findall(email_pattern, job_description)
+          if emails:
+              for email in emails:
+                  found_emails.append((email, link))
+                  
+  driver.quit()  
+  return found_emails
     
-    try:
-        for link in links:
-            driver.get(link)
-            content = driver.page_source 
-            soup = BeautifulSoup(content, 'html.parser')
-            job_description_element = soup.find('div', id='jobDescriptionText')
-
-            if job_description_element is not None:
-                job_description = job_description_element.get_text()
-                email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-                emails = re.findall(email_pattern, job_description)
-                if emails:
-                    for email in emails:
-                        found_emails.append((email, link))
-                time.sleep(2)
-    finally:
-        driver.quit()  
-
-    return found_emails
-
-found_emails_result = found_emails(scrape_job_links(['data', 'analyst'], 15))
-print(found_emails_result)
-
-
+found_emails_result = found_emails(links)
 
 def filter_emails_rh(emails_found):
     filtered_emails = [(email, link) for email, link in emails_found if re.search(r'rh|recrutement|hr', email.lower())]
     return filtered_emails
 
-filtered_emails_rh = filter_emails_rh(found_emails_result)
+emails_rh = filter_emails_rh(found_emails_result)
 print(filtered_emails_rh)
 
 
-def scrape_job_descriptions(filtered_emails_rh):
+def scrape_job_descriptions(emails_rh):
     job = {}
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(service=cService)
     
-    try:
-        for email, link in filtered_emails_rh:  
-            driver.get(link)
-            content = driver.page_source 
-            soup = BeautifulSoup(content, 'html.parser')
-            job_description = soup.find('div', id='jobDescriptionText')
-            if job_description:
-                job[email] = job_description.text
-    finally:
-        driver.quit()
-    
+    for email, link in emails_rh:  
+        driver.get(link)
+        content = driver.page_source 
+        soup = BeautifulSoup(content, 'html.parser')
+        job_description = soup.find('div', id='jobDescriptionText')
+        if job_description:
+            job[email] = job_description.text
+
+    driver.quit()
     return job
+    
+job = scrape_job_descriptions(emails_rh)
 
-def print_job_descriptions(job):
+# pour changer la forme
+def job_descriptions(job):
     for email, description in job.items():
-        print(f"Email: {email}\nDescription: {description}\n")
-
-job = scrape_job_descriptions(filtered_emails_rh)
-print_job_descriptions(job)
-
+        detail_poste = print(f"Email: {email}\nDescription: {description}\n")
+    return detail_poste
+detail_poste = job_descriptions(job)
 
 
 import pandas as pd
