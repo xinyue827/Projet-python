@@ -3,25 +3,13 @@
 
 # #  Indeed crawler and data selection
 
-# In[63]:
-
-
-def indeed_site(url):
-    from selenium import webdriver 
-    cService = webdriver.ChromeService(executable_path=r'C:\Users\JIANG JING JING\Downloads\chromedriver-win64\chromedriver.exe')
-    driver = webdriver.Chrome(service=cService)
-    driver.get(url)  
-    return driver
-url = 'https://fr.indeed.com/emplois?q=data&l=%C3%8Ele-de-France&sc=0kf%3Ajt(apprenticeship)%3B'
-driver = indeed_site(url)
-
-
-# In[64]:
-
-
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
+import re
+
+cService = webdriver.ChromeService(executable_path=r'C:\Users\JIANG JING JING\Downloads\chromedriver-win64\chromedriver.exe')
 
 def scrape_job_links(keywords, num_pages):
     links = []
@@ -46,25 +34,9 @@ def scrape_job_links(keywords, num_pages):
     driver.quit()
     return links
 
-scrape_job_links(['data', 'analyst'], 15)
-
-
-# In[66]:
-
-
-def links_length(links):
-    return len(links)
-num_links = links_length(scrape_job_links(['data', 'analyst'], 15))
-num_links
-
-
-# In[67]:
-
-
-from selenium import webdriver
-from bs4 import BeautifulSoup
-import re
-import time
+scrape_job_links(['data analyst'], 15)
+  
+len(links)
 
 def found_emails(links):
     found_emails = []
@@ -94,10 +66,6 @@ found_emails_result = found_emails(scrape_job_links(['data', 'analyst'], 15))
 print(found_emails_result)
 
 
-# In[69]:
-
-
-import re
 
 def filter_emails_rh(emails_found):
     filtered_emails = [(email, link) for email, link in emails_found if re.search(r'rh|recrutement|hr', email.lower())]
@@ -106,12 +74,6 @@ def filter_emails_rh(emails_found):
 filtered_emails_rh = filter_emails_rh(found_emails_result)
 print(filtered_emails_rh)
 
-
-# In[70]:
-
-
-from selenium import webdriver
-from bs4 import BeautifulSoup
 
 def scrape_job_descriptions(filtered_emails_rh):
     job = {}
@@ -137,8 +99,6 @@ def print_job_descriptions(job):
 job = scrape_job_descriptions(filtered_emails_rh)
 print_job_descriptions(job)
 
-
-# In[85]:
 
 
 import pandas as pd
