@@ -25,7 +25,7 @@ from selenium.webdriver.common.by import By
 
 def scrape_job_links(keywords, num_pages):
     links = []
-    driver = webdriver.Chrome() 
+    driver = webdriver.Chrome(service=cService) 
     
     for keyword in keywords:
         for page in range(1, num_pages + 1):
