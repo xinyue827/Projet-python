@@ -6,5 +6,5 @@ Bonjour, notre projet consiste à extraire des informations sur les offre d'empl
 
 2. Dans la deuxième étape, on vise à automatiser la génération du contenu de l'e-mail de candidature sur la base des descriptions de postes que nous collecté. Pour réaliser cela, on utilise l'outil AI (Chatgpt)
 
-3.La dernière étape est de réaliser l'envoi automatique des emails de candidatures.
+3. La dernière étape est de réaliser l'envoi automatique des emails de candidatures.
  
