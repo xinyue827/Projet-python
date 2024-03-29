@@ -13,8 +13,8 @@ La dernière étape consiste à réaliser l'envoi automatique des emails de cand
 
 ## Fichier  
 &bull; collecte_info.py contient des fonctions particulièrement à collecter des informations (email, description de poste) sur le site Indeed.   
-&bull; package.py contitent tous les packages que l'on utilise  
-&bull; emaile_envoi.py contient des fonctions pour la génération automatique des contenu du email et l'envoi automatique du email.
+&bull; package.py contitent tous les packages que l'on utilise 
+&bull; emaile_envoi_resend.py contient des fonctions pour la génération automatique des contenu du email et l'envoi automatique du email.
 
 
 ## Difficultés rencontrée  
