@@ -7,7 +7,7 @@ output:
   html_document: default
 ---
 # Présentation du projet
-Ce projet consiste à extraire des informations sur les offres d'emploi, notamment pour les postes d'alternance situés en Île-de-France. Notre projet est basé sur le site d'emploi Indeed. Le but est de faciliter la recherche d'emploi, en particulier pour l'étape de postulation. Notre objectif est de collecter les emails des ressources humaines (RH) en fonction des informations obtenues, d'automatiser la rédaction d'email en fonction de la description du poste, de l'email de recrutement et de l'envoi de notre CV pour effectuer la postulation.
+Ce projet consiste à extraire des informations sur les offres d'emploi, notamment pour les postes d'alternance situés en Île-de-France.   Notre projet est basé sur le site d'emploi Indeed. Le but est de faciliter la recherche d'emploi, en particulier pour l'étape de postulation. Notre objectif est de collecter les emails des ressources humaines (RH) en fonction des informations obtenues, d'automatiser la rédaction d'email en fonction de la description du poste, de l'email de recrutement et de l'envoi de notre CV pour effectuer la postulation.
 
 ```{python}
 
