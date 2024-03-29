@@ -10,4 +10,3 @@ import pandas as pd
 import os
 from openai import OpenAI
 import resend
-from module import *
