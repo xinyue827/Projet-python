@@ -28,9 +28,9 @@ Pour extraire des informations sur un site dynamique, on utilise selenium qui si
 cService = webdriver.ChromeService(executable_path=r'C:\Users\10144\.wdm\chromedriver-win64\chromedriver.exe')
 ```
 
-## Fonction pour extrair les liens de tous les offres d'emploi dans le domain que l'on souhaite sur le site d'emploi Indeed, et on peut définir le nombre de page que l'on souhaite y chercher les liens des emplois.
+## Fonction pour extrair les liens de tous les offres d'emploi 
 
-Dans notre projet, on vise à extraire les liens d'emploi dans la domaine data et analyst pour 15 pages sur Indeed.
+Ici, on est dans le domain de data et analyst sur le site d'emploi Indeed, et on peut définir le nombre de page que l'on souhaite y chercher les liens des emplois. Dans notre projet, on vise à extraire les liens d'emploi dans la domaine data et analyst pour 15 pages sur Indeed.
 
 ```{python}
 
@@ -66,7 +66,8 @@ On vérifie le nombre de lien que l'on obtenu
 len(links)
 ```
 
-## Fonction pour trouvez les emails de recrutement à partir des liens de l'offre d'emplois. Le résultat affiche à la fois l'email trouvé et le lien original d'où il trouve les emails.
+## Fonction pour trouvez les emails de recrutement à partir des liens de l'offre d'emplois. 
+Le résultat affiche à la fois l'email trouvé et le lien original d'où il trouve les emails.
 
 ```{python}
 def find_emails(links):
@@ -151,7 +152,7 @@ def gpt(text):
     return completion.choices[0].message.content
 ```
 
-## Fonction pour créer les chemins d'envoi des mails dans le site Resend et ajouter la pièce-jointe dans le mail.
+## Fonction d'envoi de mails avec pièces jointes à l'aide de l'API Resend.
 ```{python}
 
 
@@ -171,8 +172,8 @@ def send_email(recipient, content, cv_path):
 
 ```
 
-## Fonction d'automatisation de l'envoi de mail de candidature, et vérifier si il est réussie
-à envoyer.
+## Fonction d'automatisation de l'envoi de mail de candidature,
+Selon le résultat on peut vérifier s'il est réussie à envoyer le mail ou pas.
 ```{python}
 file_path = "job_descriptions.xlsx"
 df = pd.read_excel(file_path)
