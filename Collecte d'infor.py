@@ -1,18 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # # collecte d'informations sur les offres d'emploi
 
-# # Liens sur l'emploi  
-
-# In[ ]:
-
-
+#  Liens sur l'emploi  
 cService = webdriver.ChromeService(executable_path=r'C:\Users\JIANG JING JING\Downloads\chromedriver-win64\chromedriver.exe')
-
-
-# In[ ]:
-
 
 def job_links(domains, num_pages):
     links = []
@@ -37,24 +26,14 @@ def job_links(domains, num_pages):
     driver.quit()
     return links
 
-Nombres des emplois
-# In[ ]:
-
-
+# Nombres des emplois
 links = job_links(['data','analyst'], 15)
-
-
-# In[ ]:
-
-
 len(links)
 
 
 # # Chercher les mails des emplois
-Affiche des liens vers les offres d'emploi de toutes les entreprises et les courriels correspondants
-# In[ ]:
 
-
+# Affiche des liens vers les offres d'emploi de toutes les entreprises et les courriels correspondants
 def find_emails(links):
   emails_found = []
   driver = webdriver.Chrome(service=cService) 
@@ -77,22 +56,13 @@ def find_emails(links):
   driver.quit()  
   return emails_found
 
-La sélection ne porte que sur les boîtes aux lettres avec hr ou recrutement.
-# In[ ]:
-
-
+#  La sélection ne porte que sur les boîtes aux lettres avec hr ou recrutement.
 emails_found = find_emails(links)
-
 emails_rh = [(email, link) for email, link in emails_found if re.search(r'rh|recrutement|hr', email.lower())]
-
 print(emails_rh)
 
 
 # # Descriptions des emplois
-
-# In[ ]:
-
-
 def job_descriptions(email_link):
     job = {}
     driver = webdriver.Chrome(service=cService)
@@ -113,15 +83,8 @@ job_description = job_descriptions(emails_rh)
 
 # # Expoter les informations
 
-# In[ ]:
-
-
 df = pd.DataFrame(list(job_description.items()), columns=['Email', 'Description'])
 result = df.to_excel('job_descriptions.xlsx', index=False)
-
-
-# In[ ]:
-
 
 os.getcwd() # pour voir où est le fichier excel
 
