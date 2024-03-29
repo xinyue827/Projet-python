@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import re
+import os
 
 cService = webdriver.ChromeService(executable_path=r'C:\Users\JIANG JING JING\Downloads\chromedriver-win64\chromedriver.exe')
 
@@ -38,8 +39,8 @@ links = scrape_job_links(['data analyst'], 15)
   
 len(links)
 
-def found_emails(links):
-  found_emails = []
+def find_emails(links):
+  emails_found = []
   driver = webdriver.Chrome(service=cService) 
   for link in links:
       driver.get(link)
@@ -52,21 +53,13 @@ def found_emails(links):
           time.sleep(2)
           email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
           emails = re.findall(email_pattern, job_description)
-          if emails:
-              for email in emails:
-                  found_emails.append((email, link))
+          emails_rh = [(email, link) for email, link in emails_found if re.search(r'rh|recrutement|hr', email.lower())]
+          if emails_rh:
+              for email in emails_rh:
+                  emails_found.append((email, link))
                   
   driver.quit()  
-  return found_emails
-    
-found_emails_result = found_emails(links)
-
-def filter_emails_rh(emails_found):
-    filtered_emails = [(email, link) for email, link in emails_found if re.search(r'rh|recrutement|hr', email.lower())]
-    return filtered_emails
-
-emails_rh = filter_emails_rh(found_emails_result)
-print(filtered_emails_rh)
+  return emails_found
 
 
 def scrape_job_descriptions(emails_rh):
@@ -84,7 +77,8 @@ def scrape_job_descriptions(emails_rh):
     driver.quit()
     return job
     
-job = scrape_job_descriptions(emails_rh)
+emails_found = find_emails(links)
+print(emails_found)
 
 # pour changer la forme
 def job_descriptions(job):
