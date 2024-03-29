@@ -13,6 +13,8 @@ La dernière étape consiste à réaliser l'envoi automatique des emails de cand
 
 ## Fichier
 
-## Difficultés rencontrées
+## Difficultés rencontrée  
+&bull; La première difficulté rencontrée est liée à l'extraction des données à partir du site d'emploi Indeed qui utilise une structure dynamique.  
+&bull; L'envoi automatique d'emails a posé des difficulés, il existe des problèmes de sécurité comme le problème de l'authentification. Et comment réaliser exactement cet envoi automatique nous pose de nombreuse difficultés.
 
  
