@@ -1,19 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Envoi de mails avec pièces jointes à l'aide de l'API Resend
-
-# In[ ]:
-
 
 import resend
 from openai import OpenA
+import pandas as pd
+
+# # Envoi de mails avec pièces jointes à l'aide de l'API Resend
+
 client = OpenAI(api_key="XXX")
 resend.api_key = "XXX"
-
-
-# In[ ]:
-
 
 def send_email(recipient, content, cv_path):
     f = open(cv_path, "rb").read()
@@ -29,9 +22,6 @@ def send_email(recipient, content, cv_path):
 
 
 # # Utilise le modèle GPT d'OpenAI pour générer un contenu en HTML pour une lettre de candidature professionnelle
-
-# In[ ]:
-
 
 def gpt(text):
     role_system = """
@@ -49,9 +39,6 @@ You are a job application specialist with a focus on creating professional HTML 
 
 
 # # Charge les descriptions de travail à partir d'un fichier Excel, génère des e-mails personnalisés basés sur ces descriptions, et les envoie aux destinataires avec un CV en pièce jointe.
-
-# In[ ]:
-
 
 import pandas as pd
 
