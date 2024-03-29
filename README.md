@@ -3,14 +3,17 @@ Bonjour, notre projet consiste à extraire des informations sur les offre d'empl
 
 ## Le processus de réalisation
 **1. Collecte d'informations via le scraping**  
+
 La première étape c'est bien sûr de collecter des informations que l'on a besoin en utilisant la méthode de scraping. Car le site d'emploi est un site de type dynamique, ainsi on utilise le module Selenium de python pour réaliser le scraping.  
 
 D'abord on extraire tous les liens des offres d'emplois, puis on cherche les liens ayant l'email de recrutement dans son contenu, ensuite, on collecte la description de poste correspondante pour chaque email obeteu. Et on enregistre les informations collectés dans un fichier excel afin de mieux voir le résultat et faciliter notre prochaine étape.
 
 **2. Automatisation de la génération du contenu de l'e-mail de candidature**  
+
 Dans la deuxième étape, nous visons à automatiser la génération du contenu de l'e-mail de candidature en fonction des descriptions de poste que nous avons collectées et certaines nos informations personnelles comme notre parcours et compétences. Pour cela, nous utilisons l'outil d'intelligence artificielle (IA) ChatGPT, et on l'ajoute dans notre processus à l'aide du package openai.
 
 **3. Envoi automatique des emails de candidatures**  
+
 La dernière étape consiste à réaliser l'envoi automatique des emails de candidature à l'aide de Resend. Nous automatisons ce processus pour optimiser notre efficacité dans la postulation aux offres d'emploi.
 
 ## Fichier  
