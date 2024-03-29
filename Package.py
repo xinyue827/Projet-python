@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Packages
-
-# In[ ]:
-
+# Packages
 
 import time
 import random
