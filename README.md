@@ -1,5 +1,5 @@
 # Présentation du projet
-Bonjour, notre projet consiste à extraire des informations sur les offre d'emploi, notamment pour les postes d'alternance situés en île-de-france. Et notre projet est basé sur le sites d'emlpoi Indeed. Le but est de faciliter la recherche d'emploi, particulièrement pour l'étape de postuler. On vise à collecter les emails de RH selon des informations obtenues, à automatiser l'écrit du email selon la description du poste existant l'email de recrutement et l'envoi de notre CV pour effectuer la postulation.
+Bonjour, notre projet consiste à extraire des informations sur les offre d'emploi, notamment pour les postes d'alternance situés en île-de-france. Et notre projet est basé sur le sites d'emlpoi Indeed. Le but est de faciliter la recherche d'emploi, particulièrement pour l'étape de postuler. On vise à collecter les emails de RH selon des informations obtenues, à automatiser la rédaction du email selon la description du poste existant l'email de recrutement et notre information personnelle pour personaliser le contenu du mail. Enfin, on automatise l'envoi de notre CV par email pour effectuer la postulation.
 
 ## Le processus de réalisation
 &bull; **Collecte d'informations via le scraping**  
