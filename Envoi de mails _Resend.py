@@ -1,6 +1,6 @@
 
 import resend
-from openai import OpenA
+from openai import OpenAI
 import pandas as pd
 
 # # Envoi de mails avec pièces jointes à l'aide de l'API Resend
