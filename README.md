@@ -11,7 +11,10 @@ Dans la deuxième étape, nous visons à automatiser la génération du contenu 
 &bull; **Envoi automatique des emails de candidatures**  
 La dernière étape consiste à réaliser l'envoi automatique des emails de candidature. Nous automatisons ce processus pour optimiser notre efficacité dans la postulation aux offres d'emploi.
 
-## Fichier
+## Fichier  
+&bull; collect_info.py contient des fonctions particulièrement à collecter des informations (email, description de poste) sur le site Indeed.  
+&bull; emaile_envoi.py contient des fonctions pour la génération automatique des contenu du email et l'envoi automatique du email.
+
 
 ## Difficultés rencontrée  
 &bull; La première difficulté rencontrée est liée à l'extraction des données à partir du site d'emploi Indeed qui utilise une structure dynamique.  
